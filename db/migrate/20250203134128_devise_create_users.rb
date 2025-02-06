@@ -6,6 +6,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :name
       t.integer :gender
+      t.integer :height
+      t.integer :weight
       t.string :introduction
       t.string :goal
       t.integer :status

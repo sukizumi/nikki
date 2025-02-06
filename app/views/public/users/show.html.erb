@@ -1,2 +1,28 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <table class = "table table-borderless">
+      <thead>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>肉体改造前の体重</td>
+          <td><%= @user.weight %></td>
+        </tr>
+        <tr>
+          <td>自己紹介<td>
+          <td><%= @user.introduction %>
+        </tr>
+        <tr>
+          <td>目標</td>
+          <td><%= @user.goal %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

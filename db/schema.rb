@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2025_02_04_071411) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "gender"
+    t.integer "height"
     t.string "introduction"
     t.string "goal"
     t.integer "status"

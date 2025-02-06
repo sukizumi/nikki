@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    get "users/mypage" => "users#show", as: 'mypage'
+    get "users/mypage" => "users#mypage", as: 'mypage'
     get "users/information/edit" => "users#edit", as: 'edit_info'
     patch "users/information" => "users#update", as: 'update_info'
     delete "users/destroy" => "users#destroy"
