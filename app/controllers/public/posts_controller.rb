@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @post = Post.new
   end
@@ -14,9 +16,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to post_path(post.id)
+      redirect_to posts_path, notice: "投稿が完了しました"
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -36,7 +38,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :date, :weight, :step, :food, :text)
+    params.require(:post).permit(:date, :weight, :step, :food, :text).merge(user_id: current_user.id)
   end
   
 end

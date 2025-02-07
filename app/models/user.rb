@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :profile_image
 
+  validates :name, uniqueness: true
+
   enum gender: { male: 1, female: 2, blank:0 }
 
   def BMI

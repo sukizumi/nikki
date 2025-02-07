@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2025_02_07_030043) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.date "date"
-    t.integer "weight"
+    t.string "weight"
     t.integer "step"
     t.integer "food"
     t.text "text"
@@ -86,18 +86,18 @@ ActiveRecord::Schema.define(version: 2025_02_07_030043) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.integer "gender"
-    t.integer "height"
-    t.integer "weight"
-    t.string "introduction"
-    t.string "goal"
-    t.integer "status"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.integer "gender"
+    t.string "height"
+    t.string "weight"
+    t.string "introduction"
+    t.string "goal"
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
