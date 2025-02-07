@@ -20,12 +20,16 @@
             <td><%= f.select :gender, User.genders.keys, :selected=>User.genders[@user.gender] %></td>
           </tr>
           <tr>
-            <td><%= f.label :height, "身長" %><small>(小数点四捨五入)</small></td>
-            <td><%= f.text_field :height, :placeholder =>"169" %>cm （168.6cmの場合は169cm）</td>
+            <td><%= f.label :height, "身長" %></td>
+            <td><%= f.text_field :height, :placeholder =>"168.8" %>cm</td>
+          </tr>
+          <tr>
+            <td><%= f.label :weight, "体重" %></td>
+            <td><%= f.text_field :weight, :placeholder =>"70.2" %>kg</td>
           </tr>
           <tr>
             <td><%= f.label :email, "メールアドレス" %></td>
-            <td><%= f.email_field :email, autocomplete: "email" %></td>
+            <td><%= f.email_field :email, autocomplete: "email", :placeholder => "kaizo@kaizomail.com" %></td>
           </tr>
           <tr>
             <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>

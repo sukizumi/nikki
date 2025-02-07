@@ -24,15 +24,16 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    get "users/mypage" => "users#mypage", as: 'mypage'
-    get "users/information/edit" => "users#edit", as: 'edit_info'
-    patch "users/information" => "users#update", as: 'update_info'
-    delete "users/destroy" => "users#destroy"
-    resources :users do
-      resource :relationships, only: [:create, :destroy]
-      get 'following' => 'relationships#following', as: 'following'
-      get 'follower' => 'relationships#follower', as: 'follower'
-    end
+    get "users/mypage" => "users#index", as: 'mypage'
+    get "users/:id/information/edit" => "users#edit", as: 'edit_information'
+    patch "users/:id" => "users#update", as: 'update_information'
+    put "users/:id/information" => "users#update" 
+    resources :users, only: [:show, :destroy]
+    #resources :users do
+      #resource :relationships, only: [:create, :destroy]
+      #get 'following' => 'relationships#following', as: 'following'
+      #get 'follower' => 'relationships#follower', as: 'follower'
+    #end
   end
 
 

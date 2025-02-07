@@ -1,11 +1,21 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <table class = "table table-borderless">
       <thead>
         <th></th>
         <th></th>
       </thead>
       <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <% if @user.profile_image.attached? %>
+              <%= image_tag @user.profile_image, size: "150x150" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "150x150" %>
+            <% end %>
+          </td>
+        </tr>
         <tr>
           <td>ユーザー名</td>
           <td><%= @user.name %></td>
@@ -16,11 +26,15 @@
         </tr>
         <tr>
           <td>自己紹介<td>
-          <td><%= @user.introduction %>
+          <td><%= @user.introduction %></td>
         </tr>
         <tr>
           <td>目標</td>
           <td><%= @user.goal %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= link_to "編集する", edit_information_path(@user.id) %></td>
         </tr>
       </tbody>
     </table>

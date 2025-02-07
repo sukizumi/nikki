@@ -10,4 +10,9 @@ class User < ApplicationRecord
 
   enum gender: { male: 1, female: 2, blank:0 }
 
+  def BMI
+    post.weight / (height * height * 0.01)
+  end
+
+
 end

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <table class = "table table-borderless">
+      <tbody>
+        <tr>
+          <td>
+            <% if current_user.profile_image.attached? %>
+              <%= image_tag current_user.profile_image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= current_user.name %></td>
+        </tr>
+        <tr>
+          <td>肉体改造前の体重</td>
+          <td><%= current_user.weight %></td>
+        </tr>
+        <tr>
+          <td>自己紹介<td>
+          <td><%= current_user.introduction %></td>
+        </tr>
+        <tr>
+          <td>目標</td>
+          <td><%= current_user.goal %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

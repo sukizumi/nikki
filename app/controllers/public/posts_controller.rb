@@ -4,6 +4,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all
   end
 
   def show
@@ -13,7 +14,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to post_path(post.id)
     else
       render 'new'
     end
@@ -24,6 +25,9 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    post = Post.find(params[:id])
+    post.update(post_params)
+    redirect_to post_path(post.id)
   end
 
   def destroy
