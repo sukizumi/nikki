@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <table class = "table table-borderless">
+    <table class = "table border">
       <tbody>
         <tr>
           <td>
@@ -17,9 +17,13 @@
           <td><%= current_user.name %></td>
         </tr>
         <tr>
-          <td>肉体改造前の体重</td>
-          <td><%= current_user.weight %></td>
+          <td>肉体改造前</td>
+          <td><%= current_user.weight %>kg</td>
         </tr>
+        <tr>
+            <td>最新体重</td>
+            <td><%= current_user.posts.last.weight %>kg</td>
+          <tr>
         <tr>
           <td>自己紹介<td>
           <td><%= current_user.introduction %></td>

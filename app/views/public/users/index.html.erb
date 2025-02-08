@@ -3,28 +3,28 @@
     <h2 class="mt-3">マイページ</h2>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <%= render 'profile' %>
       <%= link_to "プロフィール編集", edit_information_path(current_user.id) %>
     </div>
-    <div class="col-8">
+    <div class="col-9">
       <div class="row d-flex justify-content-center">
         <div class="form">
-          <% @posts.each do |post| %>
-            <table class = "table table-borderless">
+          <% current_user.posts.each do |post| %>
+            <table class = "table border">
               <tr>
                 <th>
                   <% if post.user.profile_image.attached? %>
-                    <%= image_tag post.user.profile_image, size: "100x100" %>
+                    <%= image_tag post.user.profile_image, size: "50x50" %>
                   <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
+                    <%= image_tag 'no_image', size: "50x50" %>
                   <% end %>
                 </th>
                 <td><%= post.user.name %></td>
               </tr>
               <tr><th>日付</th> <td><%= post.date %></td></tr>
               <tr><th>体重</th> <td><%= post.weight %>KG</td></tr>
-              <tr><th>BMI</th> <td><%= @user.BMI %></td></tr>
+              <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
               <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
               <tr><th>食事</th> <td><%= post.food %></td></tr>
               <tr><th>感想</th> <td><%= post.text %></td></tr>

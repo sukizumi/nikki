@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_user, only: [:edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -30,6 +32,12 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:profile_image, :name, :gender, :height, :weight, :introduction, :goal)
+  end
+
+  def ensure_user
+    @posts = current_user.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to root_path unless @post
   end
 
 end

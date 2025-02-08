@@ -1,16 +1,35 @@
 <div class="cotainer">
   <div class="row d-flex justify-content-center">
     <h2 class="mt-3">
-      投稿一覧
+      タイムライン
     </h2>
   </div>
   <div class="row d-flex justify-content-center">
-    <% @posts.each do |post| %>
-      <%= post.date %>
-      <%= post.weight %>
-      <%= post.step %>
-      <%= post.food %>
-      <%= post.text %>
-    <% end %>
+        <div class="form">
+          <% @posts.each do |post| %>
+            <table class = "table border">
+              <tr>
+                <th>
+                  <%= link_to user_path(post.user.id) do %>
+                    <% if post.user.profile_image.attached? %>
+                      <%= image_tag post.user.profile_image, size: "50x50" %>
+                    <% else %>
+                      <%= image_tag 'no_image', size: "50x50" %>
+                    <% end %>
+                  <% end %>
+                </th>
+                <td><big><%= post.user.name %></big></td>
+              </tr>
+              <tr><th>日付</th> <td><%= post.date %></td></tr>
+              <tr><th>体重</th> <td><%= post.weight %>KG</td></tr>
+              <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
+              <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
+              <tr><th>食事</th> <td><%= post.food %></td></tr>
+              <tr><th>感想</th> <td><%= post.text %></td></tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
