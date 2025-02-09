@@ -5,7 +5,10 @@
   <div class="row">
     <div class="col-3">
       <%= render 'profile' %>
-      <%= link_to "プロフィール編集", edit_information_path(current_user.id) %>
+      <%= link_to "プロフィール編集", edit_information_path(current_user.id), class: "btn  btn-success" %>
+      <div class="withdraw mt-3">
+        <%= link_to "退会", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+      </div>
     </div>
     <div class="col-9">
       <div class="row d-flex justify-content-center">
@@ -20,14 +23,14 @@
                     <%= image_tag 'no_image', size: "50x50" %>
                   <% end %>
                 </th>
-                <td><%= post.user.name %></td>
+                <td><big><%= post.user.name %></big></td>
               </tr>
               <tr><th>日付</th> <td><%= post.date %></td></tr>
-              <tr><th>体重</th> <td><%= post.weight %>KG</td></tr>
+              <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
               <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
               <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
-              <tr><th>食事</th> <td><%= post.food %></td></tr>
-              <tr><th>感想</th> <td><%= post.text %></td></tr>
+              <tr><th>食事内容</th> <td><%= post.food_i18n %></td></tr>
+              <tr><th>感想</th> <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td></tr>
             </table>
           <% end %>
         </div>

@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :ensure_user, only: [:edit, :update, :destroy]
+  before_action :ensure_user, only: [:edit, :update]
 
   def index
     @posts = Post.all
@@ -23,9 +23,10 @@ class Public::UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-    redirect_to users_path
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = 'ユーザー削除完了'
+    redirect_to root_path
   end
 
   private

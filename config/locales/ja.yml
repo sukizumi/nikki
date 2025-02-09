@@ -5,6 +5,11 @@ ja:
         male: "男性"
         female: "女性"
         blank: "回答しない"
+    post:
+      food:
+        bad: "悪い"
+        normal: "普通"
+        good: "良い"
   errors:
     messages:
       not_saved: "エラーが発生したため、保存されませんでした。"
