@@ -1,29 +1,32 @@
 <div class="container">
   <div class="row">
-    <h2 class="a">
+    <h2 class="mt-3">
       投稿詳細
     </h2>
   </div>
   <div class="row">
-    <% @posts.each do |post| %>
-      <div class="name">
-        <%= post.user.name %>
-      </div>
-      <div class="date">
-        <%= post.date %>
-      </div>
-      <div class="weight">
-        <%= post.weight %>
-      </div>
-      <div class="step">
-        <%= post.step %>
-      </div>
-      <div class="food">
-        <%= post.food %>
-      </div>
-      <div class="text">
-        <%= post.text %>
-      </div>
-    <% end %>
+    <table class = "table border">
+      <tr>
+        <th>
+          <%= link_to user_path(@post.user.id) do %>
+            <% if @post.user.profile_image.attached? %>
+              <%= image_tag @post.user.profile_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+          <% end %>
+        </th>
+        <td><big><%= @post.user.name %></big></td>
+      </tr>
+      <tr><th>日付</th> <td><%= @post.date %></td></tr>
+      <tr><th>体重</th> <td><%= @post.weight %>kg</td></tr>
+      <tr><th>BMI</th> <td><%= (@post.weight.to_i / (@post.user.height.to_i * @post.user.height.to_i * 0.0001)).round(2) %></td></tr>
+      <tr><th>歩数</th> <td><%= @post.step %>歩</td></tr>
+      <tr><th>食事内容</th> <td><%= @post.food_i18n %></td></tr>
+      <tr><th>感想</th> <td><%= safe_join(@post.text.split("\n"),tag(:br)) %></td></tr>
+      <% if current_user == @post.user %>
+        <tr><th></th><td><%= link_to "編集", edit_post_path(@post.id) %></td></tr>
+      <% end %>
+    </table>
   </div>
 </div>
