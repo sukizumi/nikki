@@ -17,12 +17,13 @@
             <td><%= @user.name %></td>
           </tr>
           <tr>
+            <td>最新体重</td>
+            <td><%= @user.posts.last.weight %>kg</td>
+          </tr>
+          <tr>
             <td>肉体改造前</td>
             <td><%= @user.weight %>kg</td>
           </tr>
-          <tr>
-            <td>最新体重</td>
-            <td><%= @user.posts.last.weight %>kg</td>
           <tr>
             <td>自己紹介<td>
             <td><%= @user.introduction %></td>
@@ -31,7 +32,8 @@
             <td>目標</td>
             <td><%= @user.goal %></td>
           </tr>
-          <tr>
+        </tbody>
+      </table>
             <% if current_user == @user %>
               <td></td>
               <td><%= link_to "編集する", edit_information_path(@user.id) %></td>
@@ -61,7 +63,7 @@
               </tr>
               <tr><th>日付</th> <td><%= post.date %></td></tr>
               <tr><th>体重</th> <td><%= post.weight %>KG</td></tr>
-              <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
+              <tr><th>BMI</th> <td> <%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %> </td></tr>
               <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
               <tr><th>食事</th> <td><%= post.food %></td></tr>
               <tr><th>感想</th> <td><%= post.text %></td></tr>
