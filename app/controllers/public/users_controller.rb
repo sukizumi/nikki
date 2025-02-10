@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_user, only: [:edit, :update]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(date: :desc)
   end
 
   def edit

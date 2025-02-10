@@ -16,8 +16,10 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to posts_path, notice: "投稿が完了しました"
+      flash[:notice] = "投稿に成功しました"
+      redirect_to posts_path
     else
+      
       render :new
     end
   end
@@ -33,6 +35,10 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'ポスト削除完了'
+    redirect_to mypage_path
   end
 
   private

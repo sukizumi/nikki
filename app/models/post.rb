@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
 
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: { scope: :user_id, message: "この日付の投稿は既に存在します。" }
   validates :weight, presence: true
   validates :step, presence: true
   validates :food, presence: true
