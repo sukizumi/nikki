@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = 'ユーザー削除完了'
-    redirect_to new_registration_path
+    redirect_to new_user_registration_path
   end
 
   private
@@ -36,9 +36,9 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_user
-    @posts = current_user.posts
-    @post = @posts.find_by(id: params[:id])
-    redirect_to root_path unless @post
+    @user = User.find(params[:id])
+    redirect_to root_path unless @user == current_user
   end
+
 
 end

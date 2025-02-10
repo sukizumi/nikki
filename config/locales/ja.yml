@@ -13,3 +13,11 @@ ja:
   errors:
     messages:
       not_saved: "エラーが発生したため、保存されませんでした。"
+      blank: "入力してください"
+  activerecord:
+    attributes:
+      post:
+        date: "日付"
+        weight: "体重"
+        step: "歩数"
+        text: "感想"
