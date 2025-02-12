@@ -11,4 +11,7 @@ class Post < ApplicationRecord
 
   enum food: { bad: 0, normal: 1, good:2 }
 
+  def self.looks(word)
+    @post = Post.where("text LIKE?", "%#{word}%")
+  end
 end
