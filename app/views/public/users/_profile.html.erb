@@ -21,12 +21,12 @@
           <td><%= current_user.weight %>kg</td>
         </tr>
         <tr>
-          <td>自己紹介<td>
-          <td><%= current_user.introduction %></td>
-        </tr>
-        <tr>
           <td>目標</td>
           <td><%= current_user.goal %></td>
+        </tr>
+        <tr>
+          <td scope="row" colspan="2"><u>自己紹介</u> <br>
+          <%= safe_join(current_user.introduction.split("\n"),tag(:br)) %></td>
         </tr>
       </tbody>
     </table>

@@ -10,7 +10,7 @@
         <%= link_to "退会", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-6">
       <div class="row d-flex justify-content-center">
         <div class="form">
           <% current_user.posts.each do |post| %>
@@ -36,6 +36,9 @@
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="col-3">
+      <%= render 'bmi' %>
     </div>
   </div>
 </div>
