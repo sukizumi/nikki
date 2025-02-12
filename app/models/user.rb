@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   enum gender: { male: 1, female: 2, blank:0 }
 
-  
+  def self.looks(word)
+    @user = User.where("name LIKE?", "%#{word}%")
+  end
 
 end

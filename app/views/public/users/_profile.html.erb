@@ -10,7 +10,6 @@
               <%= image_tag asset_path("no_image.jpg"), size: "100x100" %>
             <% end %>
           </td>
-          <td></td>
         </tr>
         <tr>
           <td>ユーザー名</td>
@@ -21,8 +20,8 @@
           <td><%= current_user.weight %>kg</td>
         </tr>
         <tr>
-          <td>目標</td>
-          <td><%= current_user.goal %></td>
+          <td scope="row" colspan="2"><u>目標</u> <br>
+          <%= safe_join(current_user.goal.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td scope="row" colspan="2"><u>自己紹介</u> <br>
