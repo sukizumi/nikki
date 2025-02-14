@@ -17,25 +17,22 @@
             <td><%= @user.weight %>kg</td>
           </tr>
           <tr>
-            <td>自己紹介<td>
-            <td><%= @user.introduction %></td>
+            <td scope="row" colspan="2"><u>目標</u> <br>
+            <%= safe_join((@user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
           </tr>
           <tr>
-            <td>目標</td>
-            <td><%= @user.goal %></td>
+            <td scope="row" colspan="2"><u>自己紹介</u> <br>
+            <%= safe_join((@user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
           </tr>
         </tbody>
       </table>
-            <% if current_user == @user %>
-              <td></td>
-              <td><%= link_to "編集する", edit_information_path(@user.id), class:"btn btn-success" %></td>
-            <% else %>
-              <td></td>
-              <td></td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+      <% if current_user == @user %>
+        <td></td>
+        <td><%= link_to "編集する", edit_information_path(@user.id), class:"btn btn-success" %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
     </div>
 
     <div class="col-9">
@@ -45,11 +42,7 @@
             <table class = "table border">
               <tr>
                 <th>
-                  <% if post.user.profile_image.attached? %>
-                    <%= image_tag post.user.profile_image, size: "50x50" %>
-                  <% else %>
-                    <%= image_tag asset_path("no_image.jpg"), size: "50x50" %>
-                  <% end %>
+                  <%= image_tag post.user.get_profile_image(50,50) %>
                 </th>
                 <td><big><%= post.user.name %></big></td>
               </tr>

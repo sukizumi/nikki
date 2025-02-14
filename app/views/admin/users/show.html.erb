@@ -1,2 +1,60 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-3">
+    <div class="col-3">
+      <table class = "table border">
+        <thead>
+          <th>
+            <%= image_tag @user.get_profile_image(100,100) %>
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>肉体改造前</td>
+            <td><%= @user.weight %>kg</td>
+          </tr>
+          <tr>
+            <td scope="row" colspan="2"><u>目標</u> <br>
+            <%= safe_join((@user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
+          </tr>
+          <tr>
+            <td scope="row" colspan="2"><u>自己紹介</u> <br>
+            <%= safe_join((@user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="withdraw mt-3 mb-3">
+        <%= link_to "退会させる", admin_user_path(@user.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会させますか？" %>
+      </div>
+
+    </div>
+
+    <div class="col-9">
+      <div class="row d-flex justify-content-center">
+        <div class="form">
+          <% @user.posts.each do |post| %>
+            <table class = "table border">
+              <tr>
+                <th>
+                  <%= image_tag post.user.get_profile_image(50,50) %>
+                </th>
+                <td><big><%= post.user.name %></big></td>
+              </tr>
+              <tr><th>日付</th> <td><%= post.date %></td></tr>
+              <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
+              <tr><th>BMI</th> <td> <%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %> </td></tr>
+              <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
+              <tr><th>食事内容</th> <td><%= post.food_i18n %></td></tr>
+              <tr><th>感想</th> <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td></tr>
+              <tr><th></th><td><%= link_to "詳細", post_path(post.id) %></td></tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
