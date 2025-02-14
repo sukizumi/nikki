@@ -1,4 +1,4 @@
-<div class="cotainer">
+<div class="container">
   <div class="row d-flex justify-content-center">
     <h2 class="mb-3">タイムライン</h2>
   </div>
@@ -12,11 +12,7 @@
             <tr>
               <th>
                 <%= link_to user_path(post.user.id) do %>
-                  <% if post.user.profile_image.attached? %>
-                    <%= image_tag post.user.profile_image, size: "50x50" %>
-                  <% else %>
-                    <%= image_tag asset_path("no_image.jpg"), size: "50x50" %>
-                  <% end %>
+                  <%= image_tag post.user.get_profile_image(50,50) %>
                 <% end %>
               </th>
               <td><big><%= post.user.name %></big></td>

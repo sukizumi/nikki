@@ -4,21 +4,13 @@
       <table class = "table border">
         <thead>
           <th>
-            <% if @user.profile_image.attached? %>
-              <%= image_tag @user.profile_image, size: "100x100" %>
-            <% else %>
-              <%= image_tag asset_path("no_image.jpg"), size: "100x100" %>
-            <% end %>
+            <%= image_tag @user.get_profile_image(100,100) %>
           </th>
         </thead>
         <tbody>
           <tr>
             <td>ユーザー名</td>
             <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <td>最新体重</td>
-            <td><%= @user.posts.last.weight %>kg</td>
           </tr>
           <tr>
             <td>肉体改造前</td>
@@ -36,7 +28,7 @@
       </table>
             <% if current_user == @user %>
               <td></td>
-              <td><%= link_to "編集する", edit_information_path(@user.id) %></td>
+              <td><%= link_to "編集する", edit_information_path(@user.id), class:"btn btn-success" %></td>
             <% else %>
               <td></td>
               <td></td>

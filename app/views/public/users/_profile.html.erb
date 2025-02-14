@@ -4,10 +4,8 @@
       <tbody>
         <tr>
           <td>
-            <% if current_user.profile_image.attached? %>
-              <%= image_tag current_user.profile_image, size: "100x100" %>
-            <% else %>
-              <%= image_tag asset_path("no_image.jpg"), size: "100x100" %>
+            <%= link_to user_path(current_user.id) do %>
+              <%= image_tag current_user.get_profile_image(100,100) %>
             <% end %>
           </td>
         </tr>
@@ -21,11 +19,11 @@
         </tr>
         <tr>
           <td scope="row" colspan="2"><u>目標</u> <br>
-          <%= safe_join(current_user.goal.split("\n"),tag(:br)) %></td>
+          <%= safe_join((current_user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td scope="row" colspan="2"><u>自己紹介</u> <br>
-          <%= safe_join(current_user.introduction.split("\n"),tag(:br)) %></td>
+          <%= safe_join((current_user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
         </tr>
       </tbody>
     </table>

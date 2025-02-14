@@ -5,33 +5,32 @@
     </h2>
   </div>
   <div class="row">
-    <table class = "table border">
-      <tr>
-        <th>
-          <%= link_to user_path(@post.user.id) do %>
-            <% if @post.user.profile_image.attached? %>
-              <%= image_tag @post.user.profile_image, size: "50x50" %>
-            <% else %>
-              <%= image_tag asset_path("no_image.jpg"), size: "50x50" %>
+    <div class="col-3"></div>
+    <div class="col-6">
+      <table class = "table border">
+        <tr>
+          <th>
+            <%= link_to user_path(@post.user.id) do %>
+              <%= image_tag @post.user.get_profile_image(50,50) %>
             <% end %>
-          <% end %>
-        </th>
-        <td><big><%= @post.user.name %></big></td>
-      </tr>
-      <tr><th>日付</th> <td><%= @post.date %></td></tr>
-      <tr><th>体重</th> <td><%= @post.weight %>kg</td></tr>
-      <tr><th>BMI</th> <td><%= (@post.weight.to_i / (@post.user.height.to_i * @post.user.height.to_i * 0.0001)).round(2) %></td></tr>
-      <tr><th>歩数</th> <td><%= @post.step %>歩</td></tr>
-      <tr><th>食事内容</th> <td><%= @post.food_i18n %></td></tr>
-      <tr><th>感想</th> <td><%= safe_join(@post.text.split("\n"),tag(:br)) %></td></tr>
-      <% if current_user == @post.user %>
-        <tr><th></th><td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %> <%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger" %></td></tr>
-      <% end %>
-    </table>
-  </div>
-
-  <%= render "public/post_comments/index", post: @post %>
-  <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-  
+          </th>
+          <td><big><%= @post.user.name %></big></td>
+        </tr>
+        <tr><th>日付</th> <td><%= @post.date %></td></tr>
+        <tr><th>体重</th> <td><%= @post.weight %>kg</td></tr>
+        <tr><th>BMI</th> <td><%= (@post.weight.to_i / (@post.user.height.to_i * @post.user.height.to_i * 0.0001)).round(2) %></td></tr>
+        <tr><th>歩数</th> <td><%= @post.step %>歩</td></tr>
+        <tr><th>食事内容</th> <td><%= @post.food_i18n %></td></tr>
+        <tr><th>感想</th> <td><%= safe_join(@post.text.split("\n"),tag(:br)) %></td></tr>
+        <% if current_user == @post.user %>
+          <tr><th></th><td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %> <%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger" %></td></tr>
+        <% end %>
+      </table>
+      <%= render "public/post_comments/index", post: @post %>
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    </div>
+    <div class="col-3">
+      <%= render "public/users/bmi" %>
+    </div>
   </div>
 </div>

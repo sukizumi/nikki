@@ -6,7 +6,7 @@
     <div class="col-3">
       <%= render 'profile' %>
       <%= link_to "プロフィール編集", edit_information_path(current_user.id), class: "btn  btn-success" %>
-      <div class="withdraw mt-3">
+      <div class="withdraw mt-3 mb-3">
         <%= link_to "退会", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
       </div>
     </div>
@@ -17,10 +17,8 @@
             <table class = "table border">
               <tr>
                 <th>
-                  <% if post.user.profile_image.attached? %>
-                    <%= image_tag post.user.profile_image, size: "50x50" %>
-                  <% else %>
-                    <%= image_tag asset_path("no_image.jpg"), size: "50x50" %>
+                  <%= link_to user_path(post.user.id) do %>
+                    <%= image_tag post.user.get_profile_image(50,50) %>
                   <% end %>
                 </th>
                 <td><big><%= post.user.name %></big></td>
