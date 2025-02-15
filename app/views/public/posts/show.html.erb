@@ -26,8 +26,11 @@
           <tr><th></th><td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %> <%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger" %></td></tr>
         <% end %>
       </table>
+
+      <%= render "public/likes/btn", post: @post %>
       <%= render "public/post_comments/index", post: @post %>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+
     </div>
     <div class="col-3">
       <%= render "public/users/bmi" %>
