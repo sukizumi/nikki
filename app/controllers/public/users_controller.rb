@@ -29,6 +29,13 @@ class Public::UsersController < ApplicationController
     redirect_to new_user_registration_path
   end
 
+  def likes
+    @user = User.find(params[:id])
+    likes = Like.where(user_id: @user.id).pluck(:post_id)
+    @liked_posts = Post.find(likes)
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def user_params

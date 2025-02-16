@@ -28,12 +28,19 @@ Rails.application.routes.draw do
     get "users/:id/information/edit" => "users#edit", as: 'edit_information'
     patch "users/:id" => "users#update", as: 'update_information'
     put "users/:id/information" => "users#update" 
-    resources :users, only: [:show, :destroy]
-    #resources :users do
-      #resource :relationships, only: [:create, :destroy]
-      #get 'following' => 'relationships#following', as: 'following'
-      #get 'follower' => 'relationships#follower', as: 'follower'
-    #end
+
+    resources :users, only: [:show, :destroy] do
+      resource :relationships, only: [:create, :destroy]
+
+      member do
+        get :likes
+      end
+
+      collection do
+        get 'following' => 'relationships#following', as: 'following'
+        get 'follower' => 'relationships#follower', as: 'follower'
+      end
+    end
   end
 
   get "search" => "searches#search"
