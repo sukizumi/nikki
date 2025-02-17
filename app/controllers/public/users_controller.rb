@@ -11,6 +11,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @following_users = @user.following_users
+    @follower_user = @user.follower_users
   end
 
   def update
@@ -34,6 +36,16 @@ class Public::UsersController < ApplicationController
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @liked_posts = Post.find(likes)
     @post = Post.find(params[:id])
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_users
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @user =user.follwer_users
   end
 
   private
