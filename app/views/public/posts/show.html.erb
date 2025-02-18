@@ -20,14 +20,15 @@
         <tr><th>体重</th> <td><%= @post.weight %>kg</td></tr>
         <tr><th>BMI</th> <td><%= (@post.weight.to_i / (@post.user.height.to_i * @post.user.height.to_i * 0.0001)).round(2) %></td></tr>
         <tr><th>歩数</th> <td><%= @post.step %>歩</td></tr>
-        <tr><th>食事内容</th> <td><%= @post.food_i18n %></td></tr>
+        <tr><th style="white-space: nowrap;">食事内容</th> <td><%= @post.food_i18n %></td></tr>
         <tr><th>感想</th> <td><%= safe_join(@post.text.split("\n"),tag(:br)) %></td></tr>
         <% if current_user == @post.user %>
           <tr><th></th><td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-success" %> <%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger" %></td></tr>
         <% end %>
       </table>
-
-      <%= render "public/likes/btn", post: @post %>
+      <div id="like_btn_<%= @post.id %>">
+        <%= render "public/likes/btn", post: @post %>
+      </div>
       <%= render "public/post_comments/index", post: @post %>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
 
