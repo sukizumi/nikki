@@ -4,35 +4,11 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <%= render 'profile' %>
-      <%= link_to "プロフィール編集", edit_information_path(current_user.id), class: "btn  btn-success" %>
-      <div class="withdraw mt-3 mb-3">
-        <%= link_to "退会", user_path(current_user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
-      </div>
+      <%= render 'profile', user: current_user %>
     </div>
     <div class="col-6">
       <div class="row d-flex justify-content-center">
-        <div class="form">
-          <% current_user.posts.each do |post| %>
-            <table class = "table border">
-              <tr>
-                <th>
-                  <%= link_to user_path(post.user.id) do %>
-                    <%= image_tag post.user.get_profile_image(50,50) %>
-                  <% end %>
-                </th>
-                <td><big><%= post.user.name %></big></td>
-              </tr>
-              <tr><th>日付</th> <td><%= post.date %></td></tr>
-              <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
-              <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
-              <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
-              <tr><th style="white-space: nowrap;">食事内容</th> <td><%= post.food_i18n %></td></tr>
-              <tr><th>感想</th> <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td></tr>
-              <tr><th><%= render "public/likes/btn", post: post %></th><td><%= link_to "詳細", post_path(post.id) %></td></tr>
-            </table>
-          <% end %>
-        </div>
+        <%= render "posts", user: current_user %>
       </div>
     </div>
     <div class="col-3">

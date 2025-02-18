@@ -1,82 +1,16 @@
 <div class="container">
   <div class="row d-flex justify-content-center mt-3">
     <div class="col-3">
-      <table class = "table border">
-        <thead>
-          <th>
-            <%= image_tag @user.get_profile_image(100,100) %>
-          </th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ユーザー名</td>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <td>肉体改造前</td>
-            <td><%= @user.weight %>kg</td>
-          </tr>
-          <tr>
-            <td scope="row" colspan="2"><u>目標</u> <br>
-            <%= safe_join((@user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
-          </tr>
-          <tr>
-            <td scope="row" colspan="2"><u>自己紹介</u> <br>
-            <%= safe_join((@user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
-          </tr>
-          <tr>
-            <td>フォロー</td>
-            <td><%= @user.followings.count %></td>
-          </tr>
-          <tr>
-            <td>フォロワー</td>
-            <td><%= @user.followers.count %>
-          </tr>
-          <tr>
-            <td>
-              <% if current_user != @user %>
-                <% if current_user.following?(@user) %>
-                  <%= link_to "アンフォロー", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
-                <% else %>
-                  <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
-                <% end %>
-              <% end %>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-      <% if current_user == @user %>
-        <td></td>
-        <td><%= link_to "編集する", edit_information_path(@user.id), class:"btn btn-success" %></td>
-      <% else %>
-        <td></td>
-        <td></td>
-      <% end %>
+      <%= render 'profile', user: @user %>
+      <%= render 'public/relationships/btn', user: @user %>
     </div>
-
-    <div class="col-9">
+    <div class="col-6">
       <div class="row d-flex justify-content-center">
-        <div class="form">
-          <% @user.posts.each do |post| %>
-            <table class = "table border">
-              <tr>
-                <th>
-                  <%= image_tag post.user.get_profile_image(50,50) %>
-                </th>
-                <td><big><%= post.user.name %></big></td>
-              </tr>
-              <tr><th>日付</th> <td><%= post.date %></td></tr>
-              <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
-              <tr><th>BMI</th> <td> <%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %> </td></tr>
-              <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
-              <tr><th>食事内容</th> <td><%= post.food_i18n %></td></tr>
-              <tr><th>感想</th> <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td></tr>
-              <tr><th></th><td><%= link_to "詳細", post_path(post.id) %></td></tr>
-            </table>
-          <% end %>
-        </div>
+        <%= render "posts", user: @user %>
       </div>
+    </div>
+    <div class="col-3">
+      <%= render 'bmi' %>
     </div>
   </div>
 </div>
