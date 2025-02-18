@@ -38,14 +38,14 @@ class Public::UsersController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def follows
+  def following
     user = User.find(params[:id])
     @users = user.following_users
   end
 
-  def followers
+  def follower
     user = User.find(params[:id])
-    @user =user.follwer_users
+    @users = user.follower_users
   end
 
   private

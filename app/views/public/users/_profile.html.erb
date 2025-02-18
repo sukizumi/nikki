@@ -11,7 +11,7 @@
         </tr>
         <tr>
           <td>ユーザー名</td>
-          <td><%= user.name %></td>
+          <td style="white-space: nowrap;"><%= user.name %></td>
         </tr>
         <tr>
           <td>肉体改造前</td>
@@ -26,12 +26,18 @@
           <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
-          <td>フォロー</td>
-          <td><%= user.followings.count %></td>
+          <td colspan="2">
+            <%= link_to following_user_path(user) do %>
+              <p>フォロー<%= user.followings.count %></p>
+            <% end %>
+          </td>
         </tr>
         <tr>
-          <td>フォロワー</td>
-          <td><%= user.followers.count %>
+          <td colspan="2">
+            <%= link_to follower_user_path(user) do %>
+              <p>フォロワー<%= user.followers.count %></p>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
