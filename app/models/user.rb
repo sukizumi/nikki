@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   
-  has_many :following_users, through: :followers, source: :following
-  has_many :follower_users, through: :followings, source: :follower
+  has_many :following_users, through: :followings, source: :follower
+  has_many :follower_users, through: :followers, source: :following
 
   has_one_attached :profile_image
 
@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def following?(user)
-    follower_users.include?(user)
+    following_users.include?(user)
   end
 
 end
