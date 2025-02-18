@@ -4,36 +4,46 @@
       <tbody>
         <tr>
           <td>
-            <%= link_to user_path(current_user.id) do %>
-              <%= image_tag current_user.get_profile_image(100,100) %>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(100,100) %>
             <% end %>
           </td>
         </tr>
         <tr>
           <td>ユーザー名</td>
-          <td><%= current_user.name %></td>
+          <td><%= user.name %></td>
         </tr>
         <tr>
           <td>肉体改造前</td>
-          <td><%= current_user.weight %>kg</td>
+          <td><%= user.weight %>kg</td>
         </tr>
         <tr>
           <td scope="row" colspan="2"><u>目標</u> <br>
-          <%= safe_join((current_user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
+          <%= safe_join((user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td scope="row" colspan="2"><u>自己紹介</u> <br>
-          <%= safe_join((current_user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
+          <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td>フォロー</td>
-          <td><%= current_user.followings.count %></td>
+          <td><%= user.followings.count %></td>
         </tr>
         <tr>
           <td>フォロワー</td>
-          <td><%= current_user.followers.count %>
+          <td><%= user.followers.count %>
         </tr>
       </tbody>
+    </table>
+    <table class="table table-borderless">
+      <% if current_user == user %>
+        <tr>
+          <td colspan="2"><%= link_to "プロフィール編集", edit_information_path(user.id), class: "btn btn-success" %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= link_to "退会", user_path(user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
