@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row d-flex justify-content-center mt-3">
     <div class="col-3">
-      <%= render 'profile', user: @user %>
-      <%= render 'public/relationships/btn', user: @user %>
+      <div>
+        <%= render 'profile', user: @user %>
+      </div>
+      <div id="relationship_btn_<%= @user.id %>">
+        <%= render 'public/relationships/btn', user: @user %>
+      </div>
     </div>
     <div class="col-6">
       <div class="row d-flex justify-content-center">
