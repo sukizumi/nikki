@@ -1,10 +1,20 @@
-    <div class="comment index">
-      <p>コメント件数：<%= post.post_comments.count %></p>
-      <% post.post_comments.each do |post_comment| %>
-        <%= post_comment.user.name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger" %>
-        <% end %>
-      <% end %>
-    </div>
+<div class="comment index mb-2">
+  <p>コメント件数：<%= post.post_comments.count %></p>
+  <% post.post_comments.each do |post_comment| %>
+    <table class = table-borderless>
+      <tr>
+        <th style="white-space: nowrap;">
+          <%= post_comment.user.name %>
+        </th>
+        <td style="white-space: nowrap;">
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+        </td>
+        <td>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
