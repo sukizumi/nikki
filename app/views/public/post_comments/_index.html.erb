@@ -4,12 +4,15 @@
     <table class = table-borderless>
       <tr>
         <th style="white-space: nowrap;">
-          <%= post_comment.user.name %>
-        </th>
-        <td style="white-space: nowrap;">
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+          <big><%= post_comment.user.name %></big>
+          <small><%= post_comment.created_at.strftime('%Y/%m/%d') %></small>
+        </th>          
+      </tr>
+      <tr>
+        <td> 
+          <%= post_comment.comment %>
         </td>
-        <td>
+        <td style="white-space: nowrap;">
           <% if post_comment.user == current_user %>
             <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm" %>
           <% end %>
