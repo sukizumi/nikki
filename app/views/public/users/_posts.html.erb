@@ -1,5 +1,5 @@
 <div class="form">
-  <% user.posts.each do |post| %>
+  <% user.posts.order(date: :desc).each do |post| %>
     <table class = "table border">
       <tr>
         <th>

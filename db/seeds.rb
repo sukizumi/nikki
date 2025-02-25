@@ -19,6 +19,8 @@ tsuyoshi = User.find_or_create_by!(email: "tsuyoshi@gmail.com") do |user|
   user.height = "200"
   user.weight = "100"
   user.password = "poipoi"
+  user.goal = "目標はブランドン・カリー！"
+  user.introduction = "元々アイドルをしていましたが、今はユーチーバーです！"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")
 end
 
@@ -99,6 +101,24 @@ Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g
   post.step = "5000"
   post.food = "good"
   post.text = "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：ステーキ300g＋マッシュポテト。"
+  post.user = goro
+end
+
+Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：おにぎり２個＋プロテイン。") do |post|
+  post.date = "2025-02-02"
+  post.weight = "145"
+  post.step = "7000"
+  post.food = "good"
+  post.text = "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：おにぎり２個＋プロテイン。"
+  post.user = goro
+end
+
+Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：納得＋全卵２個＋ご飯1杯＋照り焼きチキン250g。") do |post|
+  post.date = "2025-02-03"
+  post.weight = "143"
+  post.step = "7500"
+  post.food = "good"
+  post.text = "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：納得＋全卵２個＋ご飯1杯＋照り焼きチキン250g。"
   post.user = goro
 end
 
