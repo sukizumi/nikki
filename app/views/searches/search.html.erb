@@ -6,37 +6,28 @@
   <div class="row d-flex justify-content-center">
     <div class="col-3"></div>
     <div class="col-6">
+    <% @users.each do |user| %>
       <table class = "table border">
-        <% @users.each do |user| %>
-          <tbody>
-            <tr>
-              <td>
-                <% if user.profile_image.attached? %>
-                  <%= image_tag user.profile_image, size: "100x100" %>
-                <% else %>
-                  <%= image_tag asset_path("no_image.jpg"), size: "100x100" %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>ユーザー名</td>
-              <td><%= user.name %></td>
-            </tr>
-            <tr>
-              <td>肉体改造前</td>
-              <td><%= user.weight %>kg</td>
-            </tr>
-            <tr>
-              <td scope="row" colspan="2"><u>目標</u> <br>
-              <%= safe_join(user.goal.split("\n"),tag(:br)) %></td>
-            </tr>
-            <tr>
-              <td scope="row" colspan="2"><u>自己紹介</u> <br>
-              <%= safe_join(user.introduction.split("\n"),tag(:br)) %></td>
-            </tr>
-          </tbody>
-        <% end %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザー名</th>
+            <th>ポスト数</th>
+            <th>最新ポスト投稿日</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag user.get_profile_image(50,50) %></td>
+            <td><%= user.name %></td>
+            <td><%= user.posts.count %></td>
+            <td><%= user.posts.last&.created_at&.strftime('%Y/%m/%d') || '投稿なし' %></td>
+            <td><%= link_to "詳細を見る", user_path(user.id) %></td>
+          </tr>
+        </tbody>
       </table>
+    <% end %>
     </div>
     <div class="col-3"></div>
   </div>
