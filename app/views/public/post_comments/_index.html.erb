@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <td> 
-          <%= post_comment.comment %>
+          <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
         </td>
         <td style="white-space: nowrap;">
           <% if post_comment.user == current_user %>
