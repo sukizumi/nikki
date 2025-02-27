@@ -1,5 +1,18 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
-    <%= image_tag('nikki.jpg', size:"300x300") %>
+  <div class="row">
+    <div class="mx-auto">
+      <%= image_tag('logo.jpg', size:"300x300") %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="mr-5">
+      <%= link_to "ゲストログイン", new_user_session_path, class: 'btn btn-outline-warning' %>
+    </div>
+    <div class="mr-5">
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary' %>
+    </div>
+    <div class="a">
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-success' %>
+    </div>
   </div>
 </div>
