@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nikki</title>
+    <title>nikki</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,15 +15,13 @@
       <%= render 'layouts/header' %> 
     </header>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <p class="notice text-center"><%= notice %></p>
+      <p class="alert text-center"><%= alert %></p>
 
       <%= yield %>
  
-
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
-
   </body>
 </html>

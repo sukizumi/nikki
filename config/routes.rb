@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_scope :user do
+    post 'users/guest/sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }

@@ -9,7 +9,7 @@
         </th>
         <td><big><%= post.user.name %></big></td>
       </tr>
-      <tr><th>日付</th> <td><%= post.date %></td></tr>
+      <tr><th>日付</th> <td ><%= post.date %></td></tr>
       <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
       <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
       <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
