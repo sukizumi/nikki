@@ -1,0 +1,48 @@
+<canvas id="myLineChart" width="400" height="200"></canvas>
+<script>
+  var myLineChart;
+
+  function renderChart() {
+    var ctx = document.getElementById("myLineChart");
+
+    if (myLineChart) {
+      myLineChart.destroy();
+    }
+
+    myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [<%= user.posts.pluck(:date).map { |d| "'#{d.strftime('%Y-%m-%d')}'" }.join(",").html_safe %>],
+        datasets: [
+          {
+            label: '体重',
+            data: [<%= user.posts.pluck(:weight).join(",") %>],
+            borderColor: "rgba(0,255,0,1)",
+            backgroundColor: "rgba(0,0,0,0)",
+            tension: 0.3
+          }
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: '体重の推移'
+        },
+        responsive: true,
+      }
+    });
+  }
+
+  $(document).on('turbolinks:load', function() {
+    renderChart();
+  });
+
+  document.addEventListener('turbolinks:before-cache', function() {
+    if (myLineChart) {
+      myLineChart.destroy();
+    }
+    $('#myLineChart').remove(); 
+    $('.chart-container').append('<canvas id="myLineChart" width="400" height="200"></canvas>');
+  });
+
+</script>
