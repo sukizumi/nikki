@@ -10,19 +10,19 @@
           </td>
         </tr>
         <tr>
-          <td><u>ユーザー名</u></td>
-          <td style="white-space: nowrap;"><%= user.name %></td>
+          <td colspan="2" style="white-space: nowrap;"><strong><u>ユーザー名</u></strong> <br>
+          <%= user.name %></td>
         </tr>
         <tr>
-          <td colspan="2"><u>肉体改造前</u> <br>
+          <td colspan="2"><strong><u>肉体改造前</u></strong> <br>
           体重：<%= user.weight %>kg　BMI：<%= (user.weight.to_i / (user.height.to_i * user.height.to_i * 0.0001)).round(2) %></td>
         </tr>
         <tr>
-          <td scope="row" colspan="2"><u>目標</u> <br>
+          <td scope="row" colspan="2"><strong><u>目標</u></strong> <br>
           <%= safe_join((user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
-          <td scope="row" colspan="2"><u>自己紹介</u> <br>
+          <td scope="row" colspan="2"><strong><u>自己紹介</u></strong> <br>
           <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
