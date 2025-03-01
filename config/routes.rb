@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/guest/sign_in', to: 'public/sessions#guest_sign_in'
-    delete 'users/sign_out', to: 'public/sessions#destroy'
   end
 
   devise_for :admin, controllers: {

@@ -12,11 +12,10 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to about_path
   end
 
-  def destroy
-    reset_session
-    sign_out current_user
-    flash[:notice] = "ログアウトしました"
-    redirect_to about_path
+  private
+
+  def skip_verify_signed_out_user_for_guest
+    skip_before_action :verify_signed_out_user if current_user&.guest?
   end
 
   # before_action :configure_sign_in_params, only: [:create]
