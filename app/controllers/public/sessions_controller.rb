@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  skip_before_action :verify_signed_out_user, only: :destroy
+
   
   def guest_sign_in
     reset_session
