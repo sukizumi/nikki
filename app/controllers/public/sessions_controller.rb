@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   
   def guest_sign_in
+    reset_session
     user = User.guest
     sign_in user
     flash[:notice] = "ゲストとしてログインしました"
