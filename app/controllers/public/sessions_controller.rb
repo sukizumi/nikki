@@ -10,6 +10,13 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to about_path
   end
 
+  def destroy
+    reset_session
+    sign_out current_user
+    flash[:notice] = "ログアウトしました"
+    redirect_to about_path
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
