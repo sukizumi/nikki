@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_user, only: [:edit, :update]
 
   def index
-    @posts = Post.all
+    @posts = current_user.posts.order(date: :desc)
   end
 
   def edit
@@ -12,7 +12,24 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @following_users = @user.following_users
-    @follower_user = @user.follower_users
+    @follower_users = @user.follower_users
+
+    begin
+      start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : nil
+      end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : nil
+
+      if start_date && end_date && start_date > end_date
+        flash[:alert] = "開始日は終了日より前にしてください"
+        @posts = @user.posts.order(date: :desc)
+      elsif start_date && end_date
+        @posts = @user.posts.where(date: start_date..end_date).order(date: :desc)
+      else
+        @posts = @user.posts.order(date: :desc)
+      end
+    rescue ArgumentError
+      flash[:alert] = "日付の形式が正しくありません"
+      @posts = @user.posts.order(date: :desc)
+    end
   end
 
   def update
@@ -28,7 +45,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = 'ユーザー削除完了'
-    redirect_to new_user_registration_path
+    redirect_to root_path
   end
 
   def likes
