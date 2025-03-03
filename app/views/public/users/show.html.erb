@@ -1,23 +1,25 @@
 <div class="container">
   <div class="row d-flex justify-content-center mt-3">
     <div class="col-3">
-      <div>
+      <div class="sticky">
         <%= render 'profile', user: @user %>
-      </div>
-      <div id="relationship_btn_<%= @user.id %>">
-        <%= render 'public/relationships/btn', user: @user %>
+        <div id="relationship_btn_<%= @user.id %>">
+          <%= render 'public/relationships/btn', user: @user %>
+        </div>
       </div>
     </div>
+
     <div class="col-6">
       <div class="row d-flex justify-content-center">
-        <%= render "graph", user: @user %>
-        <%= render "posts", user: @user %>
+        <%= render "posts", posts: @posts %>
       </div>
     </div>
+
     <div class="col-3">
       <div class="sticky">
         <%= render 'bmi' %>
       </div>
     </div>
+
   </div>
 </div>
