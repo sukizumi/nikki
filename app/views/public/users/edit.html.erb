@@ -18,24 +18,27 @@
         </thead>
         <tbody>
           <tr>
-            <td>プロフィール画像</td>
+            <th>プロフィール画像</th>
             <td><%= f.file_field :profile_image, accept: "image/*" %></td>
           </tr>
           <tr>
-            <td>ユーザー名</td>
+            <th>ユーザー名</th>
             <td><%= f.text_field :name %></td>
           </tr>
           <tr>
-            <td>目標</td>
+            <th>目標</th>
             <td><%= f.text_area :goal, rows: '4', cols: '40' %></td>
           </tr>
           <tr>
-            <td>自己紹介</td>
+            <th>自己紹介</th>
             <td><%= f.text_area :introduction, rows: '5', cols: '40' %></td>
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit "編集", class: "btn btn-success" %></td>
+            <td>
+              <%= f.submit "編集", class: "btn btn-success mr-5" %>
+              <%= link_to "退会", user_path(@user.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+            </td>
           </tr>
         </tbody>
       </table>
