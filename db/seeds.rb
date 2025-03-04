@@ -39,6 +39,8 @@ goro = User.find_or_create_by!(email: "goro@gmail.com") do |user|
   user.height = "230"
   user.weight = "144"
   user.password = "poipoi"
+  user.goal = "特に目標はないですが、健康のためにやっています。"
+  user.introduction = "元アイドル。今は特に何もやってないです。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png")
 end
 
@@ -53,27 +55,45 @@ end
 
  akiko = User.find_or_create_by!(email: "akiko@gmail.com") do |user|
   user.name = "和田"
-  user.gender = "female"
+  user.gender = "blank"
   user.height = "174"
   user.weight = "68"
   user.password = "poipoi"
 end
 
-Post.find_or_create_by!(text: "1本満足バーを20本食べてしまいました。SHAKEを20回踊っても帳消しにできないかもなあ。") do |post|
+Post.find_or_create_by!(text: "朝：ヨーグルトとバナナ　昼：1本満足バー　夜：焼きそば") do |post|
   post.date = "2025-02-12"
-  post.weight = "110"
+  post.weight = "115"
   post.step = "23000"
-  post.food = "bad"
-  post.text = "1本満足バーを20本食べてしまいました。SHAKEを20回踊っても帳消しにできないかもなあ。"
+  post.food = "normal"
+  post.text = "朝：ヨーグルトとバナナ　昼：1本満足バー　夜：焼きそば"
   post.user = tsuyoshi
 end
 
-Post.find_or_create_by!(text: "1本満足バーを23本食べてしまいました。夜空ノムコウを23回歌っても帳消しにできないかもなあ。") do |post|
+Post.find_or_create_by!(text: "朝：ヨーグルトとバナナ　昼：１本満足バー　夜：ステーキとサラダ") do |post|
   post.date = "2025-02-13"
-  post.weight = "115"
+  post.weight = "113"
   post.step = "12000"
+  post.food = "good"
+  post.text = "朝：ヨーグルトとバナナ　昼：１本満足バー　夜：ステーキとサラダ"
+  post.user = tsuyoshi
+end
+
+Post.find_or_create_by!(text: "朝：抜き　昼：ラーメンとチャーハンのセット　夜：焼肉　食べた分体を動かした。") do |post|
+  post.date = "2025-02-14"
+  post.weight = "110"
+  post.step = "26000"
   post.food = "bad"
-  post.text = "1本満足バーを23本食べてしまいました。夜空ノムコウを23回歌っても帳消しにできないかもなあ。"
+  post.text = "朝：抜き　昼：ラーメンとチャーハンのセット　夜：焼肉　食べた分体を動かした。"
+  post.user = tsuyoshi
+end
+
+Post.find_or_create_by!(text: "久しぶりの投稿。かなり太ってしまった。") do |post|
+  post.date = "2025-02-23"
+  post.weight = "120"
+  post.step = "5000"
+  post.food = "bad"
+  post.text = "久しぶりの投稿。かなり太ってしまった。"
   post.user = tsuyoshi
 end
 
@@ -84,15 +104,6 @@ Post.find_or_create_by!(text: "今日は昼食しか摂りませんでした。�
   post.food = "good"
   post.text = "今日は昼食しか摂りませんでした。ちなみに内容としては、玄米と味噌汁と冷奴と1本満足バーです。"
   post.user = takuya
-end
-
-Post.find_or_create_by!(text: "永谷園の煮込みラーメンを3食分食べました。") do |post|
-  post.date = "2025-02-02"
-  post.weight = "65"
-  post.step = "500"
-  post.food = "normal"
-  post.text = "永谷園の煮込みラーメンを3食分食べました。"
-  post.user = akiko
 end
 
 Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：ステーキ300g＋マッシュポテト。") do |post|
@@ -122,6 +133,14 @@ Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g
   post.user = goro
 end
 
+Post.find_or_create_by!(text: "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：納得＋全卵２個＋ご飯1杯＋照り焼きチキン250g。") do |post|
+  post.date = "2025-02-04"
+  post.weight = "140"
+  post.step = "12000"
+  post.food = "good"
+  post.text = "朝食：プロテイン　昼食：鶏胸肉200g＋ブロッコリー＋アスパラガス　夕食：納得＋全卵２個＋ご飯1杯＋野菜炒め。"
+  post.user = goro
+end
 
 
 

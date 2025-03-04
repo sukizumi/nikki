@@ -4,7 +4,7 @@
   </div>
   <div class="row d-flex justify-content-center">
     <% @posts.each do |post| %>
-      <table class = "table border">
+      <table class = " post-table table border">
         <tr>
           <th>
             <%= link_to admin_user_path(post.user.id) do %>

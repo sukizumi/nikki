@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <table class = "table border">
+    <table class = "post-table table border">
       <tbody>
         <tr>
           <td>
@@ -35,12 +35,12 @@
         <tr>
           <th>
             <%= link_to following_user_path(user) do %>
-              <p>フォロー<%= user.followings.count %></p>
+              <p>フォロー<%= user.following_users.count %></p>
             <% end %>
           </th>
           <th>
             <%= link_to follower_user_path(user) do %>
-              <p>フォロワー<%= user.followers.count %></p>
+              <p>フォロワー<%= user.follower_users.count %></p>
             <% end %>
           </th>
         </tr>

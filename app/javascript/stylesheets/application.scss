@@ -1,14 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
 
-table {
+.post-table {
   table-layout: auto;
   width: 100%;
 }
-th{
+.post-table th{
   white-space: nowrap;
   text-align: left;
 }
-td {
+.post-table td {
   word-wrap: break-word;
   text-align: left;
   width: 100%;

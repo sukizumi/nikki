@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :index, :show, :create, :edit, :destroy, :update] do
       resource :likes, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
+      collection do
+        get "following"
+      end
     end
 
     get "users/mypage" => "users#index", as: 'mypage'

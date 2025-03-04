@@ -19,5 +19,9 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
+
+  scope :from_followed_users, ->(user) {
+    where(user_id: user.following_users.select(:id))
+  }
   
 end
