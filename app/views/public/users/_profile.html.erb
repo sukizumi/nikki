@@ -35,12 +35,16 @@
         <tr>
           <th>
             <%= link_to following_user_path(user) do %>
-              <p>フォロー<%= user.following_users.count %></p>
+              <p>
+                フォロー<%= user.following_users.count %>
+              </p>
             <% end %>
           </th>
           <th>
             <%= link_to follower_user_path(user) do %>
-              <p>フォロワー<%= user.follower_users.count %></p>
+              <p>
+                フォロワー<span id="followers-count"><%= user.follower_users.count %></span>
+              </p>
             <% end %>
           </th>
         </tr>
