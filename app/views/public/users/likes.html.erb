@@ -1,25 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="form">
-      <% @liked_posts.each do |post| %>
-        <table class = "table border">
-          <tr>
-            <th>
-              <%= link_to user_path(post.user.id) do %>
-                <%= image_tag post.user.get_profile_image(50,50) %>
-              <% end %>
-            </th>
-            <td><big><%= post.user.name %></big></td>
-          </tr>
-          <tr><th>日付</th> <td><%= post.date %></td></tr>
-          <tr><th>体重</th> <td><%= post.weight %>kg</td></tr>
-          <tr><th>BMI</th> <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td></tr>
-          <tr><th>歩数</th> <td><%= post.step %>歩</td></tr>
-          <tr><th style="white-space: nowrap;">食事内容</th> <td><%= post.food_i18n %></td></tr>
-          <tr><th>感想</th> <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td></tr>
-          <tr><th id="like_btn_<%= post.id %>"><%= render "public/likes/btn", post: post %></th><td><%= link_to "詳細を見る", post_path(post.id) %></td></tr>
-        </table>
-      <% end %>
+      <%= render "posts", posts: @liked_posts %>
     </div>
   </div>
 </div>

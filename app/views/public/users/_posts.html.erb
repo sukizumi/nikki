@@ -7,7 +7,9 @@
             <%= image_tag post.user.get_profile_image(50,50) %>
           <% end %>
         </th>
-        <td><big><%= post.user.name %></big></td>
+        <td>
+          <big><%= post.user.name %></big>
+        </td>
       </tr>
       <tr>
         <th>日付</th>
@@ -47,7 +49,9 @@
       </tr>
       <tr>
         <th id="like_btn_<%= post.id %>"><%= render "public/likes/btn", post: post %></th>
-        <td><%= link_to "詳細を見る", post_path(post.id) %></td>
+        <td>
+          <%= link_to "詳細を見る", post_path(post.id) %>
+        </td>
       </tr>
     </table>
   <% end %>
