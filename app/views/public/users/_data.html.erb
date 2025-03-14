@@ -1,0 +1,16 @@
+<table class="table table-bordered table-sm">
+  <tbody>
+    <tr>
+      <th>投稿数</th>
+      <td><%= user.posts.count %></td>
+    </tr>
+    <tr>
+      <th>アカウント作成日</th>
+      <td><%= user.created_at.strftime('%Y/%m/%d') %>
+    </tr>
+    <tr>
+      <th>最新投稿日</th>
+      <td><%= user.posts.last&.created_at&.strftime('%Y/%m/%d') || '投稿なし' %></td>
+    </tr>
+  </tbody>
+</table>

@@ -3,22 +3,20 @@
     <%= render "graph", user: @user %>
   </div>
   <div class="row d-flex justify-content-center mt-3">
-    <div class="col-3">
+    <div class="col-md-3 d-none d-md-block">
       <div class="sticky">
-        <%= render 'profile', user: @user %>
-        <div id="relationship_btn_<%= @user.id %>">
-          <%= render 'public/relationships/btn', user: @user %>
-        </div>
+        <a href="https://web-camp.io/" target="_blank" rel="noopener"><%= image_tag('ad2.jpg', width: "100%") %></a>
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-md-6 col-12">
       <div class="row d-flex justify-content-center">
-        <%= render "posts", posts: @posts %>
+        <%= render 'profile', user: @user %>
+        <%= render 'posts', posts: @posts %>
       </div>
     </div>
 
-    <div class="col-3">
+    <div class="col-md-3 d-none d-md-block">
       <div class="sticky">
         <%= render 'bmi' %>
       </div>

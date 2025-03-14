@@ -3,17 +3,17 @@
     <h4 class="mb-3"><u><%= link_to "全投稿", posts_path %></u>　|　<%= link_to "フォロー中", following_posts_path %> </h4>
   </div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 d-none d-md-block">
       <div class="sticky">
         <a href="https://web-camp.io/" target="_blank" rel="noopener"><%= image_tag('ad2.jpg', width: "100%") %></a>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-md-6 col-12">
       <div class="row d-flex justify-content-center">
         <%= render "public/users/posts", posts: @posts %>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 d-none d-md-block">
       <div class="sticky">
         <%= render "public/users/bmi" %>
       </div>

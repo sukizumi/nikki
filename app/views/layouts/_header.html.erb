@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+<nav class="navbar navbar-expand-lg border-bottom">
   <div class="container">
     <% if admin_signed_in? %>
       <%= link_to about_path do %>
@@ -11,13 +11,16 @@
     <% else %>
       <%= link_to root_path do %>
         <%= image_tag "logo.jpg", size: "90x90" %>
-      <% end %>    <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <% end %>    
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
 
         <% if admin_signed_in? %>
           <li class="nav-item">
@@ -75,9 +78,9 @@
           </li>
         <% end %>
       </ul>
-      <div class="search">
-        <%= render 'searches/search' %>
-      </div>
+    </div>
+    <div class="search">
+      <%= render 'searches/search' %>
     </div>
   </div>
 </nav>
