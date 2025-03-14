@@ -1,54 +1,45 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <table class = "post-table table border">
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(100,100) %>
-            <% end %>
-          </td>
+<table class = "table table-bordered table-sm">
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(100,100) %>
+        <% end %>
+        <span class="d-inline-block">
+          <strong><big><%= user.name %></big></strong>
           <% if current_user == user %>
-            <td class="pt-5">
-              <%= link_to "編集", edit_information_path(user.id), class: "btn btn-outline-success" %>
-            </td>
+            <%= link_to "編集", edit_information_path(user.id), class: "btn btn-outline-success ml-5" %>
           <% else %>
-            <td></td>
+            <div id="relationship_btn_<%= @user.id %>" class="d-inline-block ml-5">
+              <%= render 'public/relationships/btn', user: @user %>
+            </div>
           <% end %>
-        </tr>
-        <tr>
-          <td colspan="2"><strong><u>ユーザー名</u></strong> <br>
-          <%= user.name %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong><u>肉体改造前</u></strong> <br>
-          体重：<%= user.weight %>kg　BMI：<%= (user.weight.to_i / (user.height.to_i * user.height.to_i * 0.0001)).round(2) %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong><u>目標</u></strong> <br>
-          <%= safe_join((user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><strong><u>自己紹介</u></strong> <br>
-          <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to following_user_path(user) do %>
-              <p>
-                フォロー<%= user.following_users.count %>
-              </p>
-            <% end %>
-          </th>
-          <th>
-            <%= link_to follower_user_path(user) do %>
-              <p>
-                フォロワー<span id="followers-count"><%= user.follower_users.count %></span>
-              </p>
-            <% end %>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><u>肉体改造前</u></strong> <br>
+        体重：<%= user.weight %>kg　BMI：<%= (user.weight.to_i / (user.height.to_i * user.height.to_i * 0.0001)).round(2) %>
+      </td>
+    </tr>
+    <tr>
+      <td><strong><u>目標</u></strong> <br>
+      <%= safe_join((user.goal.presence || "設定されていません").split("\n"),tag(:br)) %></td>
+    </tr>
+    <tr>
+      <td><strong><u>自己紹介</u></strong> <br>
+      <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to following_user_path(user) do %>
+          フォロー<%= user.following_users.count %>
+        <% end %>
+        <%= link_to follower_user_path(user) do %>
+          フォロワー<span id="followers-count"><%= user.follower_users.count %></span>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

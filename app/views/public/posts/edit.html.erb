@@ -17,7 +17,7 @@
           <tr><th>体重</th> <td><%= f.text_field :weight%>KG</td></tr>
           <tr><th>歩数</th> <td><%= f.text_field :step %>歩</td></tr>
           <tr><th>食事内容</th> <td><%= f.select :food, Post.foods.keys.map { |key| [I18n.t("enums.post.food.#{key}"),key] }, selected: @post.food %></td></tr>
-          <tr><th>感想</th> <td><%= f.text_area :text, rows: '5', cols: '40' %></td></tr>
+          <tr><th>感想</th> <td><%= f.text_area :text, rows: '5', class: "form-control w-100" %></td></tr>
           <tr><th></th> <td></td></tr>
         </table>
         <div class="d-flex justify-content-center">

@@ -5,8 +5,8 @@
     </h2>
   </div>
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-md-3 d-none d-md-block"></div>
+    <div class="col-md-6 col-12">
       <table class = "table border">
         <tr>
           <th>
@@ -29,11 +29,12 @@
       <div id="like_btn_<%= @post.id %>">
         <%= render "public/likes/btn", post: @post %>
       </div>
+      
       <%= render "public/post_comments/index", post: @post %>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
 
     </div>
-    <div class="col-3">
+    <div class="col-md-3 d-none d-md-block">
       <div class="sticky">
         <%= render "public/users/bmi" %>
       </div>
