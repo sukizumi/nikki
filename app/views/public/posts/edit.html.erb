@@ -1,30 +1,7 @@
-<div class="container mt-3">
+<div class="container">
   <div class="row d-flex justify-content-center">
-    <% if @post.errors.any? %>
-      <%= @post.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <h2 class="mb-4">投稿編集</h2>
   </div>
-  <div class="row d-flex justify-content-center">
-    <div class="form">
-      <%= form_with model: @post do |f| %>
-        <table class="table table-borderless">
-          <tr><th>日付</th> <td><%= f.date_field :date %></td></tr>
-          <tr><th>体重</th> <td><%= f.text_field :weight%>KG</td></tr>
-          <tr><th>歩数</th> <td><%= f.text_field :step %>歩</td></tr>
-          <tr><th>食事内容</th> <td><%= f.select :food, Post.foods.keys.map { |key| [I18n.t("enums.post.food.#{key}"),key] }, selected: @post.food %></td></tr>
-          <tr><th>感想</th> <td><%= f.text_area :text, rows: '5', class: "form-control w-100" %></td></tr>
-          <tr><th></th> <td></td></tr>
-        </table>
-        <div class="d-flex justify-content-center">
-          <%= f.submit '更新', class: "btn btn-success" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'form', post: @post, submit: '更新' %>
 </div>
 

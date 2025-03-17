@@ -1,0 +1,49 @@
+<div class="row d-flex justify-content-center">
+  <% if post.errors.any? %>
+    <%= post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-md-6">
+    <%= form_with model: post do |f| %>
+      <div class="row mb-3">
+        <div class="col-md-2"><%= f.label :date, "日付" %></div>
+        <div class="col-md-10"><%= f.date_field :date, class:"form-control", style: "max-width: 150px;" %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2"><%= f.label :weight, "体重" %></div>
+        <div class="col-md-10">      
+          <div class="d-flex align-items-centere">
+            <%= f.text_field :weight, class: "form-control mr-2", style: "max-width: 100px;" %>
+            <span>kg</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2"><%= f.label :step, "歩数" %></div>
+        <div class="col-md-10">      
+          <div class="d-flex align-items-center">
+            <%= f.text_field :step, class: "form-control mr-2", style: "max-width: 100px;" %>
+            <span>歩</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2"><%= f.label :food, "食事内容" %></div>
+        <div class="col-md-10"><%= f.select :food, Post.foods.keys.map { |key| [I18n.t("enums.post.food.#{key}"),key] }, selected: post.food %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2"><%= f.label :text, "感想" %></div>
+        <div class="col-md-10"><%= f.text_area :text, rows: '5', class: "form-control", style: "max-width: 500px;" %></div>
+      </div>
+      <div class="row mb-3 text-center">
+        <div class="col-md-12"><%= f.submit submit, class:"btn btn-primary" %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
