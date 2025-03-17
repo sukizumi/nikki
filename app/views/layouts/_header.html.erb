@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <% if admin_signed_in? %>
       <%= link_to about_path do %>
@@ -78,9 +78,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-    <div class="search">
-      <%= render 'searches/search' %>
     </div>
   </div>
 </nav>

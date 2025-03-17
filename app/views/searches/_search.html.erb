@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <div class="search_form">
+  <div class="container d-flex justify-content-end">
     <%= form_with url: search_path, local: true, method: :get, class:"d-flex flex-column flex-sm-row align-items-center" do |f| %>
-      <%= f.text_field :word, class:"form-control form-control-sm" %>
-      <%= f.select :model, options_for_select([['ユーザー','User'], ['投稿','Post']]), {}, class:"form-control form-control-sm mt-2 mt-sm-0 ml-sm-2" %>
+      <%= f.text_field :word %>
+      <%= f.select :model, options_for_select([['ユーザー','User'], ['投稿','Post']]), {}, class:"mt-2 mt-sm-0 ml-sm-2" %>
       <%= f.submit "検索", class: "btn btn-outline-primary btn-sm mt-2 mt-sm-0 ml-sm-2" %>
     <% end %>
   </div>

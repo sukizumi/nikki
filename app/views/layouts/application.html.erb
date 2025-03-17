@@ -12,16 +12,17 @@
   </head>
 
   <body>
-    <header>
+    <header class="border-bottom pb-2">
       <%= render 'layouts/header' %> 
+      <%= render 'searches/search' %>
     </header>
-
+    
       <p class="notice text-center"><%= notice %></p>
       <p class="alert text-center"><%= alert %></p>
 
       <%= yield %>
  
-    <footer>
+    <footer class="border-top pt-2">
       <%= render 'layouts/footer' %>
     </footer>
   </body>
