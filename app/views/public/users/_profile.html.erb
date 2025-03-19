@@ -2,9 +2,7 @@
   <tbody>
     <tr>
       <td>
-        <%= link_to user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(100,100) %>
-        <% end %>
+        <%= image_tag user.get_profile_image(100,100) %>
         <span class="d-inline-block">
           <strong><big><%= user.name %></big></strong>
           <% if current_user == user %>

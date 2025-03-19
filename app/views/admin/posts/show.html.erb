@@ -7,10 +7,10 @@
     <div class="row">
       <div class="col-3"></div>
       <div class="col-6">
-        <table class = "table border">
+        <table class = "post-table table border">
           <tr>
             <th>
-              <%= link_to user_path(@post.user.id) do %>
+              <%= link_to admin_user_path(@post.user.id) do %>
                 <%= image_tag @post.user.get_profile_image(50,50) %>
               <% end %>
             </th>

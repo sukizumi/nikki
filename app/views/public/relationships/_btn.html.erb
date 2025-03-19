@@ -1,4 +1,4 @@
-<% if current_user != user %>
+<% if current_user && current_user != user %>
   <% if current_user.following?(user) %>
     <%= link_to "アンフォロー", user_relationships_path(user.id), method: :delete, class: "btn btn-danger", remote: true, data: {"turbolinks" => false} %>
   <% else %>

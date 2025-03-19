@@ -55,11 +55,13 @@ class Public::UsersController < ApplicationController
 
   def following
     user = User.find(params[:id])
+    @user = User.find(params[:id])
     @users = user.following_users
   end
 
   def follower
     user = User.find(params[:id])
+    @user = User.find(params[:id])
     @users = user.follower_users
   end
 
