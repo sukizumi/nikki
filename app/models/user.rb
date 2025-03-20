@@ -47,6 +47,10 @@ class User < ApplicationRecord
     following_users.include?(user)
   end
 
+  def bmi
+    (weight.to_f / (height.to_f * height.to_f * 0.0001)).round(2)
+  end
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th>BMI</th>
-        <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td>
+        <td><%= post.bmi %></td>
       </tr>
       <tr>
         <th>歩数</th>

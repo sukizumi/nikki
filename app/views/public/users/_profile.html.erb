@@ -18,7 +18,7 @@
     <tr>
       <td>
         <strong><u>肉体改造前</u></strong> <br>
-        体重：<%= user.weight %>kg　BMI：<%= (user.weight.to_i / (user.height.to_i * user.height.to_i * 0.0001)).round(2) %>
+        体重：<%= user.weight %>kg　BMI：<%= user.bmi %>
       </td>
     </tr>
     <tr>

@@ -23,5 +23,9 @@ class Post < ApplicationRecord
   scope :from_followed_users, ->(user) {
     where(user_id: user.following_users.select(:id))
   }
+
+  def bmi
+    (weight.to_f / (user.height.to_f * user.height.to_f * 0.0001)).round(2)
+  end
   
 end
