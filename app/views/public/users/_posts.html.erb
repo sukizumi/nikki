@@ -7,45 +7,31 @@
             <%= image_tag post.user.get_profile_image(50,50) %>
           <% end %>
         </th>
-        <td>
-          <big><%= post.user.name %></big>
-        </td>
+        <td><big><%= post.user.name %></big></td>
       </tr>
       <tr>
         <th>日付</th>
-        <td>
-          <%= post.date %>
-        </td>
+        <td><%= post.date %></td>
       </tr>
       <tr>
         <th>体重</th>
-        <td>
-          <%= post.weight %>kg
-        </td>
+        <td><%= post.weight %>kg</td>
       </tr>
       <tr>
         <th>BMI</th>
-        <td>
-          <%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %>
-        </td>
+        <td><%= (post.weight.to_i / (post.user.height.to_i * post.user.height.to_i * 0.0001)).round(2) %></td>
       </tr>
       <tr>
         <th>歩数</th>
-        <td>
-          <%= post.step %>歩
-        </td>
+        <td><%= post.step %>歩</td>
       </tr>
       <tr>
         <th>食事内容</th>
-        <td>
-          <%= post.food_i18n %>
-        </td>
+        <td><%= post.food_i18n %></td>
       </tr>
       <tr>
         <th>感想</th>
-        <td>
-          <%= safe_join(post.text.split("\n"),tag(:br)) %>
-        </td>
+        <td><%= safe_join(post.text.split("\n"),tag(:br)) %></td>
       </tr>
       <tr>
         <th id="like_btn_<%= post.id %>">
@@ -53,9 +39,7 @@
             <%= render "public/likes/btn", post: post %>
           <% end %>
         </th>
-        <td>
-          <%= link_to "詳細を見る", post_path(post.id) %>
-        </td>
+        <td><%= link_to "詳細を見る", post_path(post.id) %></td>
       </tr>
     </table>
   <% end %>
