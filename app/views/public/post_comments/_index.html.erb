@@ -1,5 +1,4 @@
 <div class="comment index mb-2">
-  <p>コメント件数：<%= post.post_comments.count %></p>
   <% post.post_comments.each do |post_comment| %>
     <table class = table-borderless>
       <tr>
@@ -14,7 +13,7 @@
         </td>
         <td style="white-space: nowrap;">
           <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？", remote: true ,class: "btn btn-danger btn-sm ml-2" %>
           <% end %>
         </td>
       </tr>
