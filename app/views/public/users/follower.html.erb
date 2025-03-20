@@ -1,29 +1,8 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <h2 class="head mb-3"><%= @user.name %>さんをフォローしているユーザー一覧</h2>
+    <h4 class="head mb-3"><%= @user.name %>さんをフォローしているユーザー一覧</h4>
   </div>
   <div class="row d-flex justify-content-center">
-    <table class = "table border">
-      <thead>
-        <tr>
-          <th></th>
-          <th>ユーザー名</th>
-          <th>投稿数</th>
-          <th>最新投稿日</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= image_tag user.get_profile_image(50,50) %></td>
-            <td><%= user.name %></td>
-            <td><%= user.posts.count %></td>
-            <td><%= user.posts.last&.created_at&.strftime('%Y/%m/%d') || '投稿なし' %></td>
-            <td><%= link_to "詳細を見る", user_path(user.id) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'follow', users: @users %>
   </div>
 </div>
