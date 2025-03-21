@@ -18,9 +18,9 @@
           </tr>
           <tr><th>日付</th> <td><%= @post.date %></td></tr>
           <tr><th>体重</th> <td><%= @post.weight %>kg</td></tr>
-          <tr><th>BMI</th> <td><%= (@post.weight.to_i / (@post.user.height.to_i * @post.user.height.to_i * 0.0001)).round(2) %></td></tr>
+          <tr><th>BMI</th> <td><%= @post.bmi %></td></tr>
           <tr><th>歩数</th> <td><%= @post.step %>歩</td></tr>
-          <tr><th style="white-space: nowrap;">食事内容</th> <td><%= @post.food_i18n %></td></tr>
+          <tr><th>食事内容</th> <td><%= @post.food_i18n %></td></tr>
           <tr><th>感想</th> <td><%= safe_join(@post.text.split("\n"),tag(:br)) %></td></tr>
           <tr><th>♡<%= @post.likes.count %></th><td><%= link_to "削除する", admin_post_path(@post), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td></tr>
         </table>
