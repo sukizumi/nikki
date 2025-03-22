@@ -38,7 +38,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :weight
       t.string :introduction
       t.string :goal
-      t.integer :status
 
       t.timestamps null: false
     end
