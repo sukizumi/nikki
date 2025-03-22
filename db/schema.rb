@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2025_02_12_132404) do
     t.string "weight"
     t.string "introduction"
     t.string "goal"
-    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
