@@ -1,8 +1,4 @@
-$(function() {
-  $('#back a').on('click',function(e){
-    $('body, html').animate({
-      scrollTop:0
-    }, 800);
-    e.preventDefault();
-  });
+$(document).on('click', '#back a', function(e) {
+  e.preventDefault();
+  $('html, body').animate({ scrollTop: 0 }, 800);
 });
