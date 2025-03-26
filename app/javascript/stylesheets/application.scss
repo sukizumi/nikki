@@ -1,5 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
 
+.dynapuff {
+  font-family: DynaPuff;
+}
+
+.about-text {
+  font: 40px;
+}
+
 .post-table {
   table-layout: auto;
   width: 100%;
