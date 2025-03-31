@@ -16,17 +16,17 @@
   </head>
 
   <body>
-    <header class="pb-2">
+    <header>
       <%= render 'layouts/header' %> 
-      <%= render 'searches/search' %>
     </header>
 
-    <p class="notice text-center"><%= notice %></p>
-    <p class="alert text-center"><%= alert %></p>
-
-    <%= yield %>
+    <main class="<%= yield :main_class %>">
+      <p class="notice text-center"><%= notice %></p>
+      <p class="alert text-center"><%= alert %></p>
+      <%= yield %>
+    </main>
  
-    <footer class="mt-5">
+    <footer>
       <%= render 'layouts/footer' %>
     </footer>
     

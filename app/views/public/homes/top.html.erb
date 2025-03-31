@@ -1,22 +1,29 @@
+<% content_for :main_class, "top" %>
 <div class="container">
-  <div class="row">
-    <div class="mx-auto">
-      <%= image_tag('transparentLogo.png', size:"300x300") %>
-    </div>
+  <div class="row justify-content-center mt-5">
+    <h1 class="top-title">
+      Welcome to 
+      <div class="dynapuff">nikki</div>
+    </h1>
   </div>
-  <div class="row justify-content-center mt-3">
+  
+  <div class="row justify-content-center mt-5 mb-5">
+    <p class="top-message">
+      A place where you can achieve your goal
+    </p>
+  </div>
+  
+  <div class="row justify-content-center mt-5">
     <div class="d-flex flex-md-row flex-column align-items-center">
-
       <div class="mr-md-5 mb-2 mb-md-0">
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'btn btn-outline-warning' %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'btn btn-warning' %>
       </div>
       <div class="mr-md-5 mb-2 mb-md-0">
-        <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary' %>
+        <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>
       </div>
       <div>
-        <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-success' %>
+        <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success' %>
       </div>
-
     </div>
   </div>
 </div>
