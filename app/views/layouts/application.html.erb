@@ -13,24 +13,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
-
   </head>
 
   <body>
-    <header class="border-bottom pb-2">
+    <header class="pb-2">
       <%= render 'layouts/header' %> 
       <%= render 'searches/search' %>
     </header>
-    
-      <p class="notice text-center"><%= notice %></p>
-      <p class="alert text-center"><%= alert %></p>
 
-      <%= yield %>
+    <p class="notice text-center"><%= notice %></p>
+    <p class="alert text-center"><%= alert %></p>
 
-      <%= render 'layouts/scroll_top_btn' %>
+    <%= yield %>
  
-    <footer class="border-top mt-5">
+    <footer class="mt-5">
       <%= render 'layouts/footer' %>
     </footer>
+    
   </body>
 </html>
