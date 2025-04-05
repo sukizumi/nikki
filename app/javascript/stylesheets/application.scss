@@ -1,13 +1,16 @@
 @use '~bootstrap/scss/bootstrap';
 
+//nikki
 .dynapuff {
   font-family: DynaPuff;
 }
 
+//welcome to nikki
 .top-title {
   font-size: 80px;
 }
 
+//A place where you can achieve your goal
 .top-message {
   font-size: 25px;
   font-family:fantasy
@@ -21,12 +24,12 @@ footer {
   background-color:whitesmoke;
 }
 
+//topの画像
 .top {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
-
 .top::before {
   content: "";
   position: absolute;
@@ -41,6 +44,7 @@ footer {
   font: 40px;
 }
 
+//tableの形指定
 .post-table {
   table-layout: auto;
   width: 100%;
@@ -55,18 +59,27 @@ footer {
   width: 100%;
 }
 
+//スクロールしてもついてくる
 .sticky {
   position: sticky;
   top: 80px;
 }
 
+//スクロールボタン
 #back {
   position: fixed;
   right: 20px;
   bottom: 20px;
 }
-
 .scroll-top-btn i {
   font-size: 40px;
   opacity: 0.5;
+}
+
+//hoverで大きく表示
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.1);
 }
