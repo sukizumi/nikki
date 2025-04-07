@@ -1,5 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 //nikki
 .dynapuff {
   font-family: DynaPuff;
@@ -8,12 +14,40 @@
 //welcome to nikki
 .top-title {
   font-size: 80px;
+  animation-name: fadein1;
+  animation-delay: 0.5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform: translateY(50px);
+  opacity: 0;
+}
+@keyframes fadein1 {
+  0% {
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 //A place where you can achieve your goal
 .top-message {
   font-size: 25px;
-  font-family:fantasy
+  font-family: fantasy;
+  animation-name: fadein2;
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform: translateY(50px);
+  opacity: 0;
+}
+@keyframes fadein2 {
+  0% {
+  }
+  100% {
+    transfrom: translateY(0);
+    opacity: 1;
+  }
 }
 
 header {
