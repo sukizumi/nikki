@@ -3,17 +3,13 @@
     <h4 class="mb-5"><%= link_to "全投稿", posts_path %>　|　<u><%= link_to "フォロー中", following_posts_path %></u> </h4>
   </div>
   <div class="row">
-    <div class="col-md-3 d-none d-md-block">
-      <div class="sticky">
-        <a href="https://web-camp.io/" target="_blank" rel="noopener"><%= image_tag('ad2.jpg', width: "100%") %></a>
-      </div>
-    </div>
-    <div class="col-md-6 col-12">
+    <div class="col-md-2 d-none d-md-block"></div>
+    <div class="col-md-8 col-12">
       <div class="row d-flex justify-content-center">
         <%= render "indexwithgraph", posts: @posts %>
         <%= render 'layouts/scroll_top_btn' %>
       </div>
     </div>
-    <div class="col-md-3 d-none d-md-block">
+    <div class="col-md-2 d-none d-md-block"></div>
   </div>
 </div>
