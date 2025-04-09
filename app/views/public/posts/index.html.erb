@@ -6,13 +6,13 @@
     <h4 class="mb-5"><u><%= link_to "全投稿", posts_path %></u>　|　<%= link_to "フォロー中", following_posts_path %> </h4>
   </div>
   <div class="row">
-    <div class="col-md-3 d-none d-md-block"> <%= render 'ad' %> </div>
-    <div class="col-md-6 col-12">
+    <div class="col-md-2 d-none d-md-block"></div>
+    <div class="col-md-8 col-12">
       <div class="row d-flex justify-content-center">
         <%= render "indexwithgraph", posts: @posts %>
         <%= render 'layouts/scroll_top_btn' %>
       </div>
     </div>
-    <div class="col-md-3 d-none d-md-block"></div>
+    <div class="col-md-2 d-none d-md-block"></div>
   </div>
 </div>

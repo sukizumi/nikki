@@ -37,17 +37,17 @@
     </script>
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-2 col-3">
           <%= link_to user_path(post.user.id) do %>
-            <%= image_tag post.user.get_profile_image(50,50), class: "mt-4 rounded-circle"; %>
+            <%= image_tag post.user.get_profile_image(60,60), class: "mt-4 rounded-circle"; %>
           <% end %>
         </div>
-        <div class="col-10">
+        <div class="col-md-10 col-9">
           <p class="card-title">
             <%= post.date %>
           </p>
           <p class="card-text"><%= post.text %></p>
-          <span class="mr-3">
+          <span class="mr-2">
             <%= link_to user_path(post.user.id), class: "text-dark" do %>
               <i class="fa-solid fa-circle-user"></i> <%= post.user.name %>
             <% end %>
