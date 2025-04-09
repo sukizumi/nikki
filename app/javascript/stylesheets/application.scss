@@ -45,7 +45,25 @@
   0% {
   }
   100% {
-    transfrom: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+//buttons on top page
+.buttons {
+  animation-name: fadein3;
+  animation-delay: 1.5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform: translateY(50px);
+  opacity: 0;
+}
+@keyframes fadein3 {
+  0% {
+  }
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }
