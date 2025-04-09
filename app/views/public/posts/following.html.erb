@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <h4 class="mb-3"><%= link_to "全投稿", posts_path %>　|　<u><%= link_to "フォロー中", following_posts_path %></u> </h4>
+    <h4 class="mb-5"><%= link_to "全投稿", posts_path %>　|　<u><%= link_to "フォロー中", following_posts_path %></u> </h4>
   </div>
   <div class="row">
     <div class="col-md-3 d-none d-md-block">
@@ -10,14 +10,10 @@
     </div>
     <div class="col-md-6 col-12">
       <div class="row d-flex justify-content-center">
-        <%= render "index", posts: @posts %>
+        <%= render "indexwithgraph", posts: @posts %>
         <%= render 'layouts/scroll_top_btn' %>
       </div>
     </div>
     <div class="col-md-3 d-none d-md-block">
-      <div class="sticky">
-        <%= render "public/users/bmi" %>
-      </div>
-    </div>
   </div>
 </div>
