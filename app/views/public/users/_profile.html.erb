@@ -2,7 +2,7 @@
   <tbody>
     <tr>
       <td>
-        <%= image_tag user.get_profile_image(100,100) %>
+        <%= image_tag user.get_profile_image(100,100), class:"rounded-circle" %>
         <span class="d-inline-block">
           <strong><big><%= user.name %></big></strong>
           <% if current_user == user %>
@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <td><strong><u>自己紹介</u></strong> <br>
-      <%= safe_join((user.introduction || "入力されていません").split("\n"),tag(:br)) %></td>
+      <%= safe_join((user.introduction.presence || "入力されていません").split("\n"),tag(:br)) %></td>
     </tr>
     <tr>
       <td>
