@@ -56,7 +56,7 @@
           <p class="card-title">
             <%= post.date %>
           </p>
-          <p class="card-text"><%= post.text %></p>
+          <p class="card-text"><%= safe_join(post.text.split("\n"),tag(:br)) %></p>
           <span class="mr-2">
             <%= link_to user_path(post.user.id), class: "text-dark" do %>
               <i class="fa-solid fa-circle-user"></i> <%= post.user.name %>
